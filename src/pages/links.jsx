@@ -6,12 +6,14 @@ import P from "../components/P"
 import SEO from "../components/SEO"
 import Title from "../components/Title"
 
-export default function Links({ data }) {
+export default function Links() {
+  const siteTitle = "My Favorite"
+
   return (
-    <Layout>
+    <Layout title={siteTitle}>
       <SEO title="Links" />
       <Title margin="0 0 2.5rem">My Links</Title>
-      <P>{data.site.siteMetadata.title}</P>
+      <P>for work</P>
       <div className="max-w-48">
         <LinkList />
       </div>

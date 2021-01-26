@@ -5,21 +5,38 @@ import PropTypes from "prop-types"
 import React from "react"
 import Container from "./Container"
 import Footer from "./Footer"
-import Nav from "./Nav"
+
+import TopBar from "./TopBar"
 import Title from "./Title"
 
-
-
-const Layout = ({ children }) => {
+const Layout = ({ title, children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    {
       site {
         siteMetadata {
           title
+          menuLinks {
+            name
+            link
+          }
         }
       }
     }
   `)
+
+  const Header = () => {
+    return (
+      <>
+        <header className="bg-white shadow">
+          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold leading-tight text-gray-900">
+              {title}
+            </h1>
+          </div>
+        </header>
+      </>
+    )
+  }
 
   const { isLoading } = useAuth0()
 
@@ -40,7 +57,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
-        <Nav siteTitle={data.site.siteMetadata.title} />
+        <TopBar
+          menuLinks={data.site.siteMetadata.menuLinks}
+          siteTitle={data.site.siteMetadata.title}
+        />
+        <Header />
         <main>
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div className="px-4 py-6 sm:px-0">
@@ -58,6 +79,11 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+}
+
+Layout.defaultProps = {
+  title: `Gatsby + Auth0`,
 }
 
 export default Layout

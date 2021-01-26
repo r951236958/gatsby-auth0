@@ -12306,6 +12306,13 @@ react-transition-group@^4.4.0, react-transition-group@^4.4.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-use-api@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/react-use-api/-/react-use-api-2.5.1.tgz#0a5fe6b44d1b59cd0fba8503a9459e53d84c76cb"
+  integrity sha512-UguevC+f8KeD9e7QyJ70Qzo1pMaop8GiHX0QLTVrvkMxe+7H2KD+ZOv4neT/C0ujMu/fruQJeMKrydoC2e8ABw==
+  dependencies:
+    lru-cache "^5.1.1"
+
 react@^16.12.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"

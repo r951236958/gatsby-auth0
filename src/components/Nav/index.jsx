@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import React, { useState } from "react"
 import GatsbyIcon from "../../images/GatsbyIcon.svg"
 
-export default function Nav({ siteTitle }) {
+export default function Nav({ menuLinks }) {
   const [isOpen, setIsOpen] = useState(false)
   const { isLoading, isAuthenticated, loginWithRedirect, logout } = useAuth0()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,44 +28,16 @@ export default function Nav({ siteTitle }) {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                  <Link
-                    to="/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Home
-                  </Link>
-                  {isAuthenticated && (
+
+                  {menuLinks.map(link => (
                     <Link
+                      key={link.name}
                       className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                      to="/account/profile"
+                      to={link.link}
                     >
-                      Profile
+                      {link.name}
                     </Link>
-                  )}
-                  <Link
-                    to="/about/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    About
-                  </Link>
-                  <Link
-                    to="/links/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Links
-                  </Link>
-                  <Link
-                    to="/page-2/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Page2
-                  </Link>
-                  <Link
-                    to="/using-typescript/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white active:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    TypeScript
-                  </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -353,13 +325,6 @@ export default function Nav({ siteTitle }) {
           </div>
         </div>
       </nav>
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold leading-tight text-gray-900">
-            {siteTitle}
-          </h1>
-        </div>
-      </header>
     </>
   )
 }

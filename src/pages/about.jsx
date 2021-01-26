@@ -1,32 +1,64 @@
 import { Button } from "@react-md/button"
 import { FontIcon, TextIconSpacing } from "@react-md/icon"
+import { Divider } from "@react-md/divider"
+import { List, ListItem, ListSubheader } from "@react-md/list"
+import { Avatar } from "@react-md/avatar"
+import { MenuItemLink } from "@react-md/menu"
+import { Link as RouterLink } from "gatsby"
 import {
-  ChatSVGIcon, DeleteSVGIcon,
-
-
-  DoneSVGIcon, FavoriteSVGIcon,
-
-
-  SaveSVGIcon
+  ChatSVGIcon,
+  DeleteSVGIcon,
+  DoneSVGIcon,
+  FavoriteSVGIcon,
+  SaveSVGIcon,
 } from "@react-md/material-icons"
 import { graphql } from "gatsby"
 import React from "react"
 import CTABlock from "../components/CTABlock"
 import Layout from "../components/Layout"
-import LinkList from "../components/LinkList"
 import SEO from "../components/SEO"
 
+const MenuLink = props => <MenuItemLink {...props} component={RouterLink} />
 
 export default function About({ data }) {
+  const siteTitle = "About Page"
+
   return (
-    <Layout>
+    <Layout title={siteTitle}>
       <SEO title="About" />
       <h2>About {data.site.siteMetadata.title}</h2>
       <div className="text-green-500">
         <p>Such wow. Very React.</p>
       </div>
       <CTABlock />
+      <div>
+        <List>
+          <ListItem id="item-1">Item 1</ListItem>
 
+          <MenuLink to="/">Home</MenuLink>
+
+          <ListItem id="item-3" disabled>
+            Item 3 Disabled
+          </ListItem>
+          <Divider />
+          <ListSubheader>Sub actions</ListSubheader>
+          <ListItem id="item-4" leftAddon={<FontIcon>close</FontIcon>}>
+            Close
+          </ListItem>
+          <ListItem
+            id="item-5"
+            leftAddon={
+              <Avatar
+                src="https://picsum.photos/40?random"
+                alt="A random image from https://picsum.photos"
+              />
+            }
+            leftAddonType="avatar"
+          >
+            With Avatar
+          </ListItem>
+        </List>
+      </div>
       <div className="mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
         <div
           className="py-1"
@@ -224,7 +256,6 @@ export default function About({ data }) {
           <TextIconSpacing icon={<SaveSVGIcon />}>Save</TextIconSpacing>
         </Button>
       </div>
-      <LinkList />
     </Layout>
   )
 }

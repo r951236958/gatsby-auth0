@@ -24,8 +24,10 @@ const StyledLink = styled(Link)`
   }
 `
 export default function Home() {
+  const siteTitle = "Gatsby + AUTH0"
+
   return (
-    <Layout siteTitle="Gatsby + Auth0">
+    <Layout title={siteTitle}>
       <SEO title="Home" />
       <Title margin="0 0 2.5rem">gatbsy-theme-auth0</Title>
       <P>Hello world!</P>

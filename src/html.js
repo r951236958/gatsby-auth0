@@ -15,6 +15,10 @@ export default function HTML(props) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />*/}
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
