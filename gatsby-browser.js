@@ -1,6 +1,6 @@
 import "./src/styles/global.scss"
-// import "./src/styles/global.css"
-import "./static/dist/tailwind.css"
+import "./src/styles/global.css"
+// import "./static/dist/tailwind.css"
 
 import React from "react"
 import { Location } from "@reach/router"

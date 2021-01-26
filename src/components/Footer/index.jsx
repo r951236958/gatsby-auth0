@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "@react-md/Link"
+import { Link } from "@react-md/link"
 // import LinkButton from "../LinkButton"
 import styled from "styled-components"
 
