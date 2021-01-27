@@ -3,21 +3,23 @@ import "./src/styles/global.css"
 // import "./static/dist/tailwind.css"
 
 import React from "react"
-import { Location } from "@reach/router"
-import { Auth0Provider } from "@auth0/auth0-react"
+import { Auth0Provider } from '@auth0/auth0-react';
+import { navigate } from 'gatsby';
+
+const onRedirectCallback = (appState) => {
+  // Use Gatsby's navigate method to replace the url
+  navigate(appState?.returnTo || '/', { replace: true });
+};
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <Location>
-      {location => (
-        <Auth0Provider
-          domain={process.env.AUTH0_DOMAIN}
+    <Auth0Provider
+      domain={process.env.AUTH0_DOMAIN}
           clientId={process.env.AUTH0_CLIENT_ID}
-          redirectUri={window.location.origin}
-        >
-          {element}
-        </Auth0Provider>
-      )}
-    </Location>
-  )
-}
+      redirectUri={window.location.origin}
+      onRedirectCallback={onRedirectCallback}
+    >
+      {element}
+    </Auth0Provider>
+  );
+};
